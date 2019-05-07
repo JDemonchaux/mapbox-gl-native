@@ -178,7 +178,7 @@ public class MapView extends FrameLayout implements NativeMapView.ViewCallback {
     compassView.setOnClickListener(createCompassClickListener(cameraDispatcher));
 
     // LocationComponent
-    mapboxMap.injectLocationComponent(new LocationComponent(mapboxMap));
+//    mapboxMap.injectLocationComponent(new LocationComponent(mapboxMap));
 
     // inject widgets with MapboxMap
     attrView.setOnClickListener(attributionClickListener = new AttributionClickListener(context, mapboxMap));
@@ -201,6 +201,22 @@ public class MapView extends FrameLayout implements NativeMapView.ViewCallback {
     }
 
     mapCallback.initialised();
+  }
+
+  public void setLogoEnable(boolean enable) {
+    if (enable) {
+      this.logoView.setVisibility(View.VISIBLE);
+    } else {
+      this.logoView.setVisibility(View.GONE);
+    }
+  }
+
+  public void setAttributionEnable(boolean enable) {
+    if (enable) {
+      this.attrView.setVisibility(View.VISIBLE);
+    } else {
+      this.attrView.setVisibility(View.GONE);
+    }
   }
 
   private FocalPointChangeListener createFocalPointChangeListener() {
