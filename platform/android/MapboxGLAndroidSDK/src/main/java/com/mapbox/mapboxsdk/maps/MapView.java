@@ -178,7 +178,7 @@ public class MapView extends FrameLayout implements NativeMapView.ViewCallback {
     compassView.setOnClickListener(createCompassClickListener(cameraDispatcher));
 
     // LocationComponent
-//    mapboxMap.injectLocationComponent(new LocationComponent(mapboxMap));
+    mapboxMap.injectLocationComponent(new LocationComponent(mapboxMap));
 
     // inject widgets with MapboxMap
     attrView.setOnClickListener(attributionClickListener = new AttributionClickListener(context, mapboxMap));

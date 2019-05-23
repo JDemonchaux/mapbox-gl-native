@@ -12,7 +12,7 @@ import com.mapbox.android.telemetry.MapboxTelemetry;
 import com.mapbox.android.telemetry.TelemetryEnabler;
 import com.mapbox.android.telemetry.SessionInterval;
 
-import com.mapbox.mapboxsdk.BuildConfig;
+
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.maps.TelemetryDefinition;
 import com.mapbox.mapboxsdk.offline.OfflineRegionDefinition;
@@ -26,13 +26,13 @@ public class TelemetryImpl implements TelemetryDefinition {
   private MapboxTelemetry telemetry;
 
   public TelemetryImpl() {
-    Context appContext = Mapbox.getApplicationContext();
-    String accessToken = Mapbox.getAccessToken();
-    telemetry = new MapboxTelemetry(appContext, accessToken, BuildConfig.MAPBOX_EVENTS_USER_AGENT);
-    TelemetryEnabler.State telemetryState = TelemetryEnabler.retrieveTelemetryStateFromPreferences();
-    if (TelemetryEnabler.State.ENABLED.equals(telemetryState)) {
-      telemetry.enable();
-    }
+//    Context appContext = Mapbox.getApplicationContext();
+//    String accessToken = Mapbox.getAccessToken();
+//    telemetry = new MapboxTelemetry(appContext, accessToken, BuildConfig.MAPBOX_EVENTS_USER_AGENT);
+//    TelemetryEnabler.State telemetryState = TelemetryEnabler.retrieveTelemetryStateFromPreferences();
+//    if (TelemetryEnabler.State.ENABLED.equals(telemetryState)) {
+//      telemetry.enable();
+//    }
   }
 
   /**
@@ -40,11 +40,11 @@ public class TelemetryImpl implements TelemetryDefinition {
    */
   @Override
   public void onAppUserTurnstileEvent() {
-    AppUserTurnstile turnstileEvent = new AppUserTurnstile(BuildConfig.MAPBOX_SDK_IDENTIFIER,
-      BuildConfig.MAPBOX_SDK_VERSION);
-    telemetry.push(turnstileEvent);
-    MapEventFactory mapEventFactory = new MapEventFactory();
-    telemetry.push(mapEventFactory.createMapLoadEvent(Event.Type.MAP_LOAD));
+//    AppUserTurnstile turnstileEvent = new AppUserTurnstile(BuildConfig.MAPBOX_SDK_IDENTIFIER,
+//      BuildConfig.MAPBOX_SDK_VERSION);
+//    telemetry.push(turnstileEvent);
+//    MapEventFactory mapEventFactory = new MapEventFactory();
+//    telemetry.push(mapEventFactory.createMapLoadEvent(Event.Type.MAP_LOAD));
   }
 
   /**
@@ -57,10 +57,10 @@ public class TelemetryImpl implements TelemetryDefinition {
    */
   @Override
   public void onGestureInteraction(String eventType, double latitude, double longitude, double zoom) {
-    MapEventFactory mapEventFactory = new MapEventFactory();
-    MapState state = new MapState(latitude, longitude, zoom);
-    state.setGesture(eventType);
-    telemetry.push(mapEventFactory.createMapGestureEvent(Event.Type.MAP_CLICK, state));
+//    MapEventFactory mapEventFactory = new MapEventFactory();
+//    MapState state = new MapState(latitude, longitude, zoom);
+//    state.setGesture(eventType);
+//    telemetry.push(mapEventFactory.createMapGestureEvent(Event.Type.MAP_CLICK, state));
   }
 
   /**
@@ -68,13 +68,13 @@ public class TelemetryImpl implements TelemetryDefinition {
    */
   @Override
   public void setUserTelemetryRequestState(boolean enabledTelemetry) {
-    if (enabledTelemetry) {
-      TelemetryEnabler.updateTelemetryState(TelemetryEnabler.State.ENABLED);
-      telemetry.enable();
-    } else {
-      telemetry.disable();
-      TelemetryEnabler.updateTelemetryState(TelemetryEnabler.State.DISABLED);
-    }
+//    if (enabledTelemetry) {
+//      TelemetryEnabler.updateTelemetryState(TelemetryEnabler.State.ENABLED);
+//      telemetry.enable();
+//    } else {
+//      telemetry.disable();
+//      TelemetryEnabler.updateTelemetryState(TelemetryEnabler.State.DISABLED);
+//    }
   }
 
   /**
@@ -84,7 +84,7 @@ public class TelemetryImpl implements TelemetryDefinition {
    */
   @Override
   public void setDebugLoggingEnabled(boolean debugLoggingEnabled) {
-    telemetry.updateDebugLoggingEnabled(debugLoggingEnabled);
+//    telemetry.updateDebugLoggingEnabled(debugLoggingEnabled);
   }
 
   /**
@@ -95,24 +95,25 @@ public class TelemetryImpl implements TelemetryDefinition {
    */
   @Override
   public boolean setSessionIdRotationInterval(int interval) {
-    return telemetry.updateSessionIdRotationInterval(new SessionInterval(interval));
+//    return telemetry.updateSessionIdRotationInterval(new SessionInterval(interval));
+    return false;
   }
 
   @Override
   public void onCreateOfflineRegion(@NonNull OfflineRegionDefinition offlineDefinition) {
-    MapEventFactory mapEventFactory = new MapEventFactory();
-    telemetry.push(mapEventFactory.createOfflineDownloadStartEvent(
-      offlineDefinition instanceof OfflineTilePyramidRegionDefinition ? "tileregion" : "shaperegion",
-      offlineDefinition.getMinZoom(),
-      offlineDefinition.getMaxZoom(),
-      offlineDefinition.getStyleURL())
-    );
+//    MapEventFactory mapEventFactory = new MapEventFactory();
+//    telemetry.push(mapEventFactory.createOfflineDownloadStartEvent(
+//      offlineDefinition instanceof OfflineTilePyramidRegionDefinition ? "tileregion" : "shaperegion",
+//      offlineDefinition.getMinZoom(),
+//      offlineDefinition.getMaxZoom(),
+//      offlineDefinition.getStyleURL())
+//    );
   }
 
   @Override
   public void onPerformanceEvent(Bundle data) {
-    if (data != null && !data.isEmpty()) {
-      telemetry.push(new PerformanceEvent(UUID.randomUUID().toString(), data));
-    }
+//    if (data != null && !data.isEmpty()) {
+//      telemetry.push(new PerformanceEvent(UUID.randomUUID().toString(), data));
+//    }
   }
 }

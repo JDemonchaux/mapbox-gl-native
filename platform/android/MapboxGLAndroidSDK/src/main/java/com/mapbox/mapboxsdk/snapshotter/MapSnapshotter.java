@@ -438,10 +438,10 @@ public class MapSnapshotter {
   }
 
   private void drawAttribution(Canvas canvas, AttributionMeasure measure, PointF anchorPoint) {
-    canvas.save();
-    canvas.translate(anchorPoint.x, anchorPoint.y);
-    measure.getTextView().draw(canvas);
-    canvas.restore();
+//    canvas.save();
+//    canvas.translate(anchorPoint.x, anchorPoint.y);
+//    measure.getTextView().draw(canvas);
+//    canvas.restore();
   }
 
   @NonNull

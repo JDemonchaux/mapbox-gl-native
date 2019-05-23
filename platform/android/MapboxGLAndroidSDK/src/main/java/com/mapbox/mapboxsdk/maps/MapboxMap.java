@@ -130,14 +130,14 @@ public final class MapboxMap {
    */
   void onStart() {
     nativeMapView.update();
-//    locationComponent.onStart();
+    locationComponent.onStart();
   }
 
   /**
    * Called when the hosting Activity/Fragment onStop() method is called.
    */
   void onStop() {
-//    locationComponent.onStop();
+    locationComponent.onStop();
   }
 
   /**
@@ -174,7 +174,7 @@ public final class MapboxMap {
    * Called when the hosting Activity/Fragment onDestroy()/onDestroyView() method is called.
    */
   void onDestroy() {
-//    locationComponent.onDestroy();
+    locationComponent.onDestroy();
   }
 
   /**
@@ -805,7 +805,7 @@ public final class MapboxMap {
    * @see Style
    */
   public void setStyle(Style.Builder builder, final Style.OnStyleLoaded callback) {
-//    locationComponent.onStartLoadingMap();
+    locationComponent.onStartLoadingMap();
     if (style != null) {
       style.onWillStartLoadingMap();
     }
@@ -834,7 +834,7 @@ public final class MapboxMap {
 
     if (style != null) {
       style.onDidFinishLoadingStyle();
-//      locationComponent.onFinishLoadingStyle();
+      locationComponent.onFinishLoadingStyle();
       for (Style.OnStyleLoaded styleLoadedCallback : styleLoadedCallbacks) {
         styleLoadedCallback.onStyleLoaded(style);
       }
@@ -1933,7 +1933,7 @@ public final class MapboxMap {
   //
 
   void injectLocationComponent(LocationComponent locationComponent) {
-//    this.locationComponent = locationComponent;
+    this.locationComponent = locationComponent;
   }
 
   void injectAnnotationManager(AnnotationManager annotationManager) {

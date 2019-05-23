@@ -1,6 +1,11 @@
 # By default, the flags in this file are appended to flags specified
 # in ../sdk/tools/proguard/proguard-android.txt,
 # contents of this file will be appended into proguard-android.txt
+-dontshrink
+-dontoptimize
+-dontpreverify
+
+-keep class *.*
 -keepattributes Signature, *Annotation*, EnclosingMethod
 
 # Reflection on classes from native code

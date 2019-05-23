@@ -94,8 +94,8 @@ public final class UiSettings {
   void onSaveInstanceState(@NonNull Bundle outState) {
     saveGestures(outState);
     saveCompass(outState);
-    saveLogo(outState);
-    saveAttribution(outState);
+//    saveLogo(outState);
+//    saveAttribution(outState);
     saveDeselectMarkersOnTap(outState);
     saveFocalPoint(outState);
   }
@@ -103,8 +103,8 @@ public final class UiSettings {
   void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
     restoreGestures(savedInstanceState);
     restoreCompass(savedInstanceState);
-    restoreLogo(savedInstanceState);
-    restoreAttribution(savedInstanceState);
+//    restoreLogo(savedInstanceState);
+//    restoreAttribution(savedInstanceState);
     restoreDeselectMarkersOnTap(savedInstanceState);
     restoreFocalPoint(savedInstanceState);
   }
@@ -190,7 +190,7 @@ public final class UiSettings {
   }
 
   private void initialiseLogo(MapboxMapOptions options, @NonNull Resources resources) {
-    setLogoEnabled(options.getLogoEnabled());
+    setLogoEnabled(false);
     setLogoGravity(options.getLogoGravity());
     setLogoMargins(resources, options.getLogoMargins());
   }
@@ -224,7 +224,7 @@ public final class UiSettings {
   }
 
   private void initialiseAttribution(@NonNull Context context, MapboxMapOptions options) {
-    setAttributionEnabled(options.getAttributionEnabled());
+    setAttributionEnabled(false);
     setAttributionGravity(options.getAttributionGravity());
     setAttributionMargins(context, options.getAttributionMargins());
     int attributionTintColor = options.getAttributionTintColor();
